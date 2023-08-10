@@ -1,0 +1,102 @@
+/* 초기화 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+  font-size: 16px;
+  background-color: #fffde7;
+  min-width: 390px;
+}
+
+p,
+h1,
+h3 {
+  padding: 0;
+  margin: 0;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  cursor: pointer;
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+/* 라이브러리 */
+.container {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.bd-red {
+  border: 1px solid red;
+}
+.bd-blue {
+  border: 1px solid blue;
+}
+.bd-green {
+  border: 1px solid green;
+}
+
+.w-100 {
+  width: 100%;
+}
+.w-50 {
+  width: 50%;
+}
+
+.h-100 {
+  height: 100%;
+}
+.h-50 {
+  height: 50%;
+}
+
+.dp-f {
+  display: flex;
+}
+.jc-c {
+  justify-content: center;
+}
+.jc-sb {
+  justify-content: space-between;
+}
+.jc-sa {
+  justify-content: space-around;
+}
+.ai-c {
+  align-items: center;
+}
+.fd-c {
+  flex-direction: column;
+}
+
+.p-a {
+  position: absolute;
+}
+.p-r {
+  position: relative;
+}
+.p-c {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.empty {
+  flex-grow: 1;
+}
