@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/header.css" />
 
+    <!-- aws sdk -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1432.0.min.js"></script>
+    <script src="./s3/PhotoViewer.js" type="module"></script>
+
     <!-- 자바스크립트 -->
     <script src="./scripts/main.js" type="module" defer></script>
   </head>
@@ -72,5 +76,14 @@
         </div>
       </div>
     </header>
+
+    <main>
+      <section class="photo-list">
+        <div class="container">
+          <h1>Photo Album Viewer</h1>
+          <div id="viewer"></div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
