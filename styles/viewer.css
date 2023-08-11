@@ -1,0 +1,46 @@
+.s3-viewer {
+  /* border: 1px solid red; */
+  margin-top: 50px;
+}
+.s3-viewer h1 {
+  margin-bottom: 20px;
+}
+
+#viewer {
+  /* border: 1px solid; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+#viewer > div {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s3-viewer .album-btn {
+  border: 1px solid green;
+}
+
+#images {
+  /* border: 1px solid; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+#images div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#images img {
+  width: 100%;
+  max-width: 350px;
+  object-fit: cover;
+}

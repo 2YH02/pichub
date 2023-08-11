@@ -28,10 +28,11 @@
     <!-- 커스텀 스타일 -->
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/viewer.css" />
 
     <!-- aws sdk -->
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1432.0.min.js"></script>
-    <script src="./s3/PhotoViewer.js" type="module"></script>
+    <script src="./s3/storeImageUrl.js" type="module"></script>
 
     <!-- 자바스크립트 -->
     <script src="./scripts/main.js" type="module" defer></script>
@@ -78,10 +79,14 @@
     </header>
 
     <main>
-      <section class="photo-list">
+      <section class="s3-viewer">
         <div class="container">
-          <h1>Photo Album Viewer</h1>
-          <div id="viewer"></div>
+          <h1 id="list-title">User lists</h1>
+          <div class="buttonWrap"></div>
+          <div id="users" class="dp-f jc-c ai-c fd-c"></div>
+          <div id="viewer" class=""></div>
+          <div id="images" class=""></div>
+          <div class="buttonWrap"></div>
         </div>
       </section>
     </main>
