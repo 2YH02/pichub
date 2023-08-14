@@ -54,6 +54,10 @@
   display: none;
 }
 
+.header .input::placeholder {
+  color: #fff;
+}
+
 .header .input.active {
   display: block;
   width: 100%;
@@ -77,6 +81,10 @@
   margin-left: -30px;
   padding-left: 40px;
   width: 170px;
+}
+
+.header .moblie-search .input-m::placeholder {
+  color: #fff;
 }
 
 .header .hamburger {
