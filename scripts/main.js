@@ -4,30 +4,18 @@ import {
   headerHamburgerHandle,
 } from "./controllers/header.controller.js";
 
+import { createUser, viewUserPage } from "./controllers/addUser.controller.js";
+
+import { listUsers } from "../s3/viewUserData.js";
+
 // Header Events
 headerLinkHandle();
 headerInputHandle();
 headerHamburgerHandle();
 
-const users = [];
+// create User Events
+createUser();
+listUsers();
 
-const arr = {
-  name: "user1",
-  pn: "010-0000-0000",
-  email: "user1@user1.com",
-  nation: "Korea",
-  picture: "./images/user.png",
-};
-
-const arr1 = {
-  name: "user2",
-  pn: "010-1000-0000",
-  email: "user2@user2.com",
-  nation: "Korea",
-  picture: "./images/user.png",
-};
-
-users.push(arr);
-users.push(arr1);
-
-localStorage.setItem("users", JSON.stringify(users));
+// view user page
+viewUserPage();

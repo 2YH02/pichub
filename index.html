@@ -8,7 +8,7 @@
     <!-- favicon -->
     <link rel="shortcut icon" href="#" />
 
-    <!-- 폰트 -->
+    <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,16 +32,19 @@
       referrerpolicy="no-referrer"
     />
 
-    <!-- 커스텀 스타일 -->
+    <!-- custom style -->
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/header.css" />
     <link rel="stylesheet" href="./styles/viewer.css" />
+    <link rel="stylesheet" href="./styles/addUser.css" />
+    <link rel="stylesheet" href="./styles/addAlbum.css" />
+    <link rel="stylesheet" href="./styles/profilePage.css" />
 
     <!-- aws sdk -->
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1432.0.min.js"></script>
-    <script src="./s3/storeImageUrl.js" type="module"></script>
+    <script src="./s3/viewUserData.js" type="module"></script>
 
-    <!-- 자바스크립트 -->
+    <!-- javscript -->
     <script src="./scripts/main.js" type="module" defer></script>
   </head>
   <body>
@@ -63,10 +66,14 @@
         <div class="header_nav dp-f ai-c w-100">
           <ul class="dp-f ai-c jc-c h-100 w-100">
             <li>
-              <a href="#"><i class="fa-solid fa-user-plus"></i></a>
+              <a href="#" class="add-user"
+                ><i class="fa-solid fa-user-plus"></i
+              ></a>
             </li>
             <li>
-              <a href="#"><i class="fa-solid fa-address-book"></i></a>
+              <a href="#" class="view-user"
+                ><i class="fa-solid fa-address-book"></i
+              ></a>
             </li>
             <li class="searchWrap">
               <a href="#" class="search"
@@ -93,7 +100,15 @@
       </div>
     </header>
 
-    <main>
+    <section id="create-user" class=""></section>
+
+    <section id="create-album"></section>
+
+    <section id="edit-profile-page"></section>
+
+    <section id="profile-page"></section>
+
+    <main id="s3">
       <section class="s3-viewer">
         <div class="container">
           <h1 id="list-title">User lists</h1>

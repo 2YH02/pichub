@@ -3,6 +3,7 @@
   /* height: 80px; */
   color: #eee;
   width: 100%;
+  z-index: 1000;
 }
 
 .header .header_logo {
@@ -167,6 +168,7 @@
   }
   .header .header_nav.active {
     display: block;
+    z-index: 1000;
   }
   .header .header_nav ul {
     flex-direction: column;

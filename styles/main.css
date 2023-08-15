@@ -147,3 +147,18 @@ button {
 .empty {
   flex-grow: 1;
 }
+
+input {
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #ffe0b2;
+  font-size: 1.1rem;
+  padding: 5px;
+  width: 200px;
+  height: 25px;
+}
+
+input:focus {
+  border: 1px solid #ff9800;
+}
