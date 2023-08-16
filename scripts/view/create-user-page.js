@@ -1,4 +1,4 @@
-import { listUsers } from "../../s3/viewUserData";
+import { listUsers, getProfileImg, profileUpload } from "../../s3/viewUserData";
 import { addUserData, addUser } from "../../s3/handleUserData";
 import { v4 as uuid } from "uuid";
 
@@ -37,6 +37,16 @@ export function generateAddUserPage() {
   profileImg.style.width = "100%";
   profileImg.id = "profile-img";
   profileImg.accept = "image/png, image/jpeg";
+
+  // //////////////////////////////////////////////////////////////////
+  imgInput.addEventListener("change", () => {
+    const selectedFile = imgInput.files[0];
+    if (selectedFile) {
+      const fileName = selectedFile.name;
+      console.log(fileName);
+    }
+  });
+  // //////////////////////////////////////////////////////////////////
 
   profileImg.addEventListener("click", (e) => {
     e.preventDefault();
@@ -163,8 +173,27 @@ export function generateAddUserPage() {
     ) {
       alert("모든 항목을 입력해 주세요.");
     } else {
+      const currentUrl = await getProfileImg(userData.id);
+      const decodedCurrentUrl = decodeURIComponent(currentUrl);
+      const currentArr = decodedCurrentUrl.split("/");
+      const n = currentArr.length;
+      const currentImg = currentArr[n - 1];
+
+      // Change profile Img
+      const selectedFile = imgInput.files[0];
+      if (selectedFile) {
+        const fileName = selectedFile.name;
+        console.log(fileName);
+
+        console.log(currentImg);
+        await profileUpload(userData.id, selectedFile, fileName);
+      } else {
+        console.log("변경 X");
+      }
+
       // create user
       await addUser(userData.id);
+
       // update user data
       const userJson = import.meta.env.VITE_USER_JSON;
       await fetch(userJson)

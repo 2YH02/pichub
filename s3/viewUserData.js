@@ -14,7 +14,7 @@ let s3 = new AWS.S3({
   params: { Bucket: albumBucketName },
 });
 
-function generateAlbumBtn(userName) {
+function generateAlbumBtn(userName, profileImg) {
   const userBox = document.createElement("div");
 
   const imgWrap = document.createElement("div");
@@ -39,7 +39,7 @@ function generateAlbumBtn(userName) {
       if (data.length > 0) {
         const user = data.find((v) => v.id === userName);
 
-        img.src = user.picture;
+        img.src = profileImg;
         name.textContent = user.name;
         nation.textContent = user.nation;
         pn.textContent = user.phon;
@@ -160,8 +160,15 @@ export function listUsers() {
       // debugger;
       generateUser();
 
-      data.forEach((v) => {
-        users.appendChild(generateAlbumBtn(v.id));
+      data.forEach(async (v) => {
+        // console.log(v);
+        // debugger;
+        const ProfileImg = await getProfileImg(v.id);
+        // debugger;
+        // console.log(ProfileImg);
+        // debugger;
+        // console.log(await getProfileImg(v.id));
+        users.appendChild(generateAlbumBtn(v.id, ProfileImg));
       });
     })
     .catch((error) => {
@@ -219,7 +226,7 @@ export async function listAlbums(userName) {
           viewer.style.display = "grid";
         }
 
-        // console.log(data.CommonPrefixes);
+        // console.log(data.Contents[1]);
         data.CommonPrefixes.forEach((commonPrefixe) => {
           const albumName = commonPrefixe.Prefix.split("/")[1];
           const album = document.createElement("div");
@@ -477,6 +484,65 @@ function deleteImg(userName, albumName, img) {
     s3.deleteObject(
       {
         Key: userName + "/" + albumName + "/" + img,
+      },
+      (err, data) => {
+        if (err) {
+          rej("이미지 삭제 오류:", err);
+        } else {
+          res("삭제 성공");
+        }
+      }
+    );
+  });
+}
+
+export async function getProfileImg(userName) {
+  return new Promise((res, rej) => {
+    let albumPhotosKey = encodeURIComponent(userName) + "/";
+    s3.listObjectsV2(
+      { Prefix: albumPhotosKey, Delimiter: "/" },
+      function (err, data) {
+        if (err) {
+          rej("프로필 출력 오류: " + err.message);
+        } else {
+          if (!data.Contents[1]) {
+            res("./images/user.png");
+          } else {
+            let href = this.request.httpRequest.endpoint.href;
+            let bucketUrl = href + albumBucketName + "/";
+            let photoKey = data.Contents[1].Key;
+            let photoUrl = bucketUrl + encodeURIComponent(photoKey);
+            res(photoUrl);
+          }
+        }
+      }
+    );
+  });
+}
+
+export function profileUpload(userName, file, img) {
+  return new Promise((res, rej) => {
+    s3.upload(
+      {
+        Key: userName + "/" + img,
+        Body: file,
+      },
+      (err, data) => {
+        if (err) {
+          rej("이미지 업로드 오류:", err);
+        } else {
+          res("업로드 성공:", data.Location);
+        }
+      }
+    );
+  });
+}
+
+export function profileDelete(userName, img) {
+  return new Promise((res, rej) => {
+    s3.deleteObject(
+      {
+        Key: userName + "/" + img,
       },
       (err, data) => {
         if (err) {

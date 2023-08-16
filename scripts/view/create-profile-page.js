@@ -1,16 +1,20 @@
 import { generateEditProfilePage } from "./create-edit-profile-page";
 import { deleteUserData, addUserData } from "../../s3/handleUserData";
-import { listUsers } from "../../s3/viewUserData";
+import { listUsers, getProfileImg } from "../../s3/viewUserData";
 
 export function generateProfilePage(userName) {
   const userJson = import.meta.env.VITE_USER_JSON;
   const container = document.createElement("div");
   fetch(userJson)
     .then((res) => res.json())
-    .then((data) => {
+    .then(async (data) => {
       // console.log("data:", data);
       const user = data.find((v) => v.id === userName);
       // console.log(user);
+
+      // get profile img
+      const profileImgUrl = await getProfileImg(user.id);
+
       // Create the main container
       container.classList.add("container", "dp-f", "al-c", "jc-c");
 
@@ -30,7 +34,7 @@ export function generateProfilePage(userName) {
 
       // Create the profile image
       const profileImg = document.createElement("img");
-      profileImg.src = "./images/user.png";
+      profileImg.src = profileImgUrl;
       profileImg.alt = "";
       profileImg.style.width = "100%";
       profileImg.id = "profile-img";

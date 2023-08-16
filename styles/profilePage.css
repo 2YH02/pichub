@@ -12,6 +12,8 @@
 }
 
 #edit-profile-page .create-user__left > div:first-child {
+  width: 288px;
+  height: 288px;
   position: relative;
   margin-bottom: 10px;
 }
@@ -39,6 +41,9 @@
 #edit-profile-page .create-user__left--img img {
   vertical-align: bottom;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 #edit-profile-page .create-user__left--social {
@@ -128,6 +133,8 @@
 }
 
 #profile-page .create-user__left > div:first-child {
+  width: 288px;
+  height: 288px;
   position: relative;
   margin-bottom: 10px;
 }
@@ -135,6 +142,9 @@
 #profile-page .create-user__left--img img {
   vertical-align: bottom;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 #profile-page .create-user__left--social {

@@ -1,8 +1,13 @@
-import { listUsers } from "../../s3/viewUserData";
+import {
+  listUsers,
+  getProfileImg,
+  profileUpload,
+  profileDelete,
+} from "../../s3/viewUserData";
 import { addUserData } from "../../s3/handleUserData";
 
 export function generateEditProfilePage(user) {
-  console.log(user);
+  // console.log(user);
   // Create the main container
   const container = document.createElement("div");
   container.classList.add("container", "dp-f", "al-c", "jc-c");
@@ -32,11 +37,32 @@ export function generateEditProfilePage(user) {
 
   // Create the profile image
   const profileImg = document.createElement("img");
-  profileImg.src = "./images/user.png";
   profileImg.alt = "";
   profileImg.style.width = "100%";
   profileImg.id = "profile-img";
   profileImg.accept = "image/png, image/jpeg";
+
+  // get profile img
+  const profileImgUrl = async () => {
+    try {
+      const imgUrl = await getProfileImg(user.id);
+      profileImg.src = imgUrl;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  profileImgUrl();
+
+  // //////////////////////////////////////////////////////////////////
+  imgInput.addEventListener("change", () => {
+    const selectedFile = imgInput.files[0];
+    if (selectedFile) {
+      const fileName = selectedFile.name;
+      console.log(fileName);
+    }
+  });
+  // //////////////////////////////////////////////////////////////////
 
   profileImg.addEventListener("click", (e) => {
     e.preventDefault();
@@ -68,6 +94,27 @@ export function generateEditProfilePage(user) {
 
   leftSection.appendChild(imgContainer);
   leftSection.appendChild(socialIcons);
+  // //////////////////////////////////////////////////////////////////////////
+  // socialIcons.addEventListener("click", async () => {
+  //   const currentUrl = await getProfileImg(user.id);
+  //   const decodedCurrentUrl = decodeURIComponent(currentUrl);
+  //   const currentArr = decodedCurrentUrl.split("/");
+  //   const n = currentArr.length;
+  //   const currentImg = currentArr[n - 1];
+
+  //   const selectedFile = imgInput.files[0];
+  //   if (selectedFile) {
+  //     const fileName = selectedFile.name;
+  //     console.log(fileName);
+
+  //     console.log(currentImg);
+  //     await profileDelete(user.id, currentImg);
+  //     await profileUpload(user.id, selectedFile, fileName);
+  //   } else {
+  //     console.log("변경 X");
+  //   }
+  // });
+  // //////////////////////////////////////////////////////////////////
 
   // Create the right section
   const rightSection = document.createElement("div");
@@ -132,6 +179,26 @@ export function generateEditProfilePage(user) {
 
   // Click save event
   saveButton.addEventListener("click", async () => {
+    const currentUrl = await getProfileImg(user.id);
+    const decodedCurrentUrl = decodeURIComponent(currentUrl);
+    const currentArr = decodedCurrentUrl.split("/");
+    const n = currentArr.length;
+    const currentImg = currentArr[n - 1];
+
+    // Change profile Img
+    const selectedFile = imgInput.files[0];
+    if (selectedFile) {
+      const fileName = selectedFile.name;
+      console.log(fileName);
+
+      console.log(currentImg);
+      await profileDelete(user.id, currentImg);
+      await profileUpload(user.id, selectedFile, fileName);
+    } else {
+      console.log("변경 X");
+    }
+
+    // Change user Data
     const userJson = import.meta.env.VITE_USER_JSON;
     if (
       user.id === null ||

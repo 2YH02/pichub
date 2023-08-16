@@ -34,17 +34,24 @@
 
 #create-user .create-user__left--img {
   cursor: pointer;
+  width: 288px;
+  height: 288px;
+  position: relative;
 }
 
 #create-user .create-user__left--img img {
   vertical-align: bottom;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 #create-user .create-user__left--social {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 288px;
 }
 
 #create-user .create-user__left--social img {
