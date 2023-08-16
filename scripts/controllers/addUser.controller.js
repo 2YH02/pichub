@@ -16,9 +16,11 @@ export function createUser() {
   const profilePage = document.getElementById("profile-page");
 
   addUserBtn.addEventListener("click", () => {
+    const editProfilePage = document.getElementById("edit-profile-page");
+    editProfilePage.innerHTML = "";
     createUserSection.innerHTML = "";
     createUserSection.append(generateAddUserPage());
-    
+
     if (createUserSection.style.display === "none") {
       createUserSection.style.display = "block";
     }

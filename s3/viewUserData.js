@@ -14,7 +14,7 @@ let s3 = new AWS.S3({
   params: { Bucket: albumBucketName },
 });
 
-function generateAlbumBtn(userName, profileImg) {
+function generateAlbumBtn(userName, profileImg, data) {
   const userBox = document.createElement("div");
 
   const imgWrap = document.createElement("div");
@@ -31,36 +31,27 @@ function generateAlbumBtn(userName, profileImg) {
   const albumBtn = document.createElement("div");
   const profileBtn = document.createElement("div");
 
-  const userJson = import.meta.env.VITE_USER_JSON;
+  if (data.length > 0) {
+    const user = data.find((v) => v.id === userName);
 
-  fetch(userJson)
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.length > 0) {
-        const user = data.find((v) => v.id === userName);
+    img.src = profileImg;
+    name.textContent = user.name;
+    nation.textContent = user.nation;
+    pn.textContent = user.phon;
+    email.textContent = user.email;
 
-        img.src = profileImg;
-        name.textContent = user.name;
-        nation.textContent = user.nation;
-        pn.textContent = user.phon;
-        email.textContent = user.email;
+    albumBtn.textContent = "Go to Album";
+    albumBtn.classList.add("btn");
+    profileBtn.textContent = "Go to Profile";
+    profileBtn.classList.add("btn-reverse");
 
-        albumBtn.textContent = "Go to Album";
-        albumBtn.classList.add("btn");
-        profileBtn.textContent = "Go to Profile";
-        profileBtn.classList.add("btn-reverse");
+    userBtnWrap.append(albumBtn, profileBtn);
 
-        userBtnWrap.append(albumBtn, profileBtn);
+    imgWrap.append(img);
+    infoWrap.append(name, nation, pn, email, userBtnWrap);
 
-        imgWrap.append(img);
-        infoWrap.append(name, nation, pn, email, userBtnWrap);
-
-        userBox.append(imgWrap, infoWrap);
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+    userBox.append(imgWrap, infoWrap);
+  }
 
   albumBtn.addEventListener("click", () => {
     listAlbums(userName);
@@ -136,6 +127,7 @@ function generateAlbumImg(album, userName, albumName) {
 }
 
 export function listUsers() {
+  generateUser();
   const userJson = import.meta.env.VITE_USER_JSON;
   fetch(userJson)
     .then((res) => res.json())
@@ -159,12 +151,11 @@ export function listUsers() {
         s3Viewer.style.display = "block";
       }
       // debugger;
-      generateUser();
 
       const userElements = await Promise.all(
         data.map(async (v) => {
           const ProfileImg = await getProfileImg(v.id);
-          return generateAlbumBtn(v.id, ProfileImg);
+          return generateAlbumBtn(v.id, ProfileImg, data);
         })
       );
 
@@ -175,6 +166,40 @@ export function listUsers() {
     .catch((error) => {
       console.error("에러:", error);
     });
+}
+
+export async function listSearchUsers(data) {
+  generateUser();
+  // console.log(data);
+  const editProfilePage = document.getElementById("edit-profile-page");
+  const profilePage = document.getElementById("profile-page");
+  const createUser = document.getElementById("create-user");
+  const s3Viewer = document.getElementById("s3");
+
+  if (editProfilePage.style.display !== "none") {
+    editProfilePage.style.display = "none";
+  }
+  if (profilePage.style.display !== "none") {
+    profilePage.style.display = "none";
+  }
+  if (createUser.style.display !== "none") {
+    createUser.style.display = "none";
+  }
+  if (s3Viewer.style.display === "none") {
+    s3Viewer.style.display = "block";
+  }
+  // debugger;
+
+  const userElements = await Promise.all(
+    data.map(async (v) => {
+      const ProfileImg = await getProfileImg(v.id);
+      return generateAlbumBtn(v.id, ProfileImg, data);
+    })
+  );
+
+  userElements.forEach((e) => {
+    users.appendChild(e);
+  });
 }
 
 export async function listAlbums(userName) {

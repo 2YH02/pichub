@@ -130,6 +130,8 @@ export function generateProfilePage(userName) {
 `;
       // Click edit event
       editButton.addEventListener("click", () => {
+        const createUser = document.getElementById("create-user");
+        createUser.innerHTML = "";
         const profilePage = document.getElementById("profile-page");
         const profileEditPage = document.getElementById("edit-profile-page");
         profileEditPage.style.display = "block";

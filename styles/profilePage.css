@@ -8,7 +8,11 @@
 }
 
 #edit-profile-page .create-user__left {
-  width: 40%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #edit-profile-page .create-user__left > div:first-child {
@@ -60,7 +64,7 @@
 }
 
 #edit-profile-page .create-user__right {
-  width: 60%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,7 +134,11 @@
 }
 
 #profile-page .create-user__left {
-  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
 }
 
 #profile-page .create-user__left > div:first-child {
@@ -162,7 +170,7 @@
 }
 
 #profile-page .create-user__right {
-  width: 60%;
+  width: 50%;
   margin-left: 50px;
 }
 
