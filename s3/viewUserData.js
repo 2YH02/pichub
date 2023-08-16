@@ -139,7 +139,8 @@ export function listUsers() {
   const userJson = import.meta.env.VITE_USER_JSON;
   fetch(userJson)
     .then((res) => res.json())
-    .then((data) => {
+    .then(async (data) => {
+      // console.log(data);
       const editProfilePage = document.getElementById("edit-profile-page");
       const profilePage = document.getElementById("profile-page");
       const createUser = document.getElementById("create-user");
@@ -160,15 +161,15 @@ export function listUsers() {
       // debugger;
       generateUser();
 
-      data.forEach(async (v) => {
-        // console.log(v);
-        // debugger;
-        const ProfileImg = await getProfileImg(v.id);
-        // debugger;
-        // console.log(ProfileImg);
-        // debugger;
-        // console.log(await getProfileImg(v.id));
-        users.appendChild(generateAlbumBtn(v.id, ProfileImg));
+      const userElements = await Promise.all(
+        data.map(async (v) => {
+          const ProfileImg = await getProfileImg(v.id);
+          return generateAlbumBtn(v.id, ProfileImg);
+        })
+      );
+
+      userElements.forEach((e) => {
+        users.appendChild(e);
       });
     })
     .catch((error) => {
