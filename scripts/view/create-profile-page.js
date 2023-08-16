@@ -16,7 +16,7 @@ export function generateProfilePage(userName) {
       const profileImgUrl = await getProfileImg(user.id);
 
       // Create the main container
-      container.classList.add("container", "dp-f", "al-c", "jc-c");
+      container.classList.add("container", "dp-f", "ai-c", "jc-c");
 
       // Create the left section
       const leftSection = document.createElement("div");

@@ -10,7 +10,7 @@ export function generateEditProfilePage(user) {
   // console.log(user);
   // Create the main container
   const container = document.createElement("div");
-  container.classList.add("container", "dp-f", "al-c", "jc-c");
+  container.classList.add("container", "dp-f", "ai-c", "jc-c");
 
   // Create the left section
   const leftSection = document.createElement("div");

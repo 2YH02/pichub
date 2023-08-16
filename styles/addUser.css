@@ -119,3 +119,21 @@
   height: 40px;
   border-radius: 5px;
 }
+
+@media screen and (max-width: 767px) {
+  #create-user .container {
+    flex-direction: column;
+  }
+  #create-user .create-user__left {
+    width: auto;
+  }
+  #create-user .create-user__right {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #create-user .create-user__right--info > div {
+    flex-direction: column;
+  }
+}

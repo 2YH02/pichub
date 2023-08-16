@@ -47,6 +47,7 @@
 }
 
 #edit-profile-page .create-user__left--social {
+  width: 288px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,6 +149,7 @@
 }
 
 #profile-page .create-user__left--social {
+  width: 288px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -199,4 +201,45 @@
   width: 180px;
   height: 40px;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 767px) {
+  #profile-page .container {
+    flex-direction: column;
+  }
+  #profile-page .create-user__left {
+    width: auto;
+  }
+  #profile-page .create-user__right {
+    margin-left: 0;
+    width: auto;
+  }
+  #profile-page .create-user__right--info {
+    margin-bottom: 10px;
+  }
+  #profile-page .create-user__right--info > div > div {
+    text-align: center;
+  }
+  #profile-page .create-user__right--info > div > div:first-child {
+    font-size: 1.6rem;
+  }
+  #profile-page .create-user__right--info > div > div:last-child {
+    font-size: 1.2rem;
+  }
+
+  #edit-profile-page .container {
+    flex-direction: column;
+  }
+  #edit-profile-page .create-user__left {
+    width: auto;
+  }
+  #edit-profile-page .create-user__right {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #edit-profile-page .create-user__right--info > div {
+    flex-direction: column;
+  }
 }

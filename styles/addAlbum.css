@@ -38,3 +38,26 @@
   margin: 25px 10px;
   margin-bottom: 0;
 }
+
+@media screen and (max-width: 480px) {
+  #create-album > div {
+    width: 300px;
+    height: 200px;
+  }
+
+  #create-album > div > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #create-album > div label {
+    margin-bottom: 10px;
+  }
+
+  #create-album > div > div:last-child > div {
+    margin: 15px 5px;
+    margin-bottom: 0;
+  }
+}
