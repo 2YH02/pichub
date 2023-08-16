@@ -6,12 +6,17 @@ import {
 
 import { createUser, viewUserPage } from "./controllers/addUser.controller.js";
 
+import { searchByUser } from "./controllers/search.controller.js";
+
 import { listUsers } from "../s3/viewUserData.js";
 
 // Header Events
 headerLinkHandle();
 headerInputHandle();
 headerHamburgerHandle();
+
+// Search Events
+searchByUser();
 
 // create User Events
 createUser();

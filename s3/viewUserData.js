@@ -79,7 +79,7 @@ function generateAlbumBtn(userName, profileImg) {
   return userBox;
 }
 
-function generateUser() {
+export function generateUser() {
   const listTitle = document.getElementById("list-title");
   listTitle.textContent = "User lists";
 
