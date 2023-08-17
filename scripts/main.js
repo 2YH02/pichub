@@ -8,7 +8,7 @@ import { createUser, viewUserPage } from "./controllers/addUser.controller.js";
 
 import { searchByUser } from "./controllers/search.controller.js";
 
-import { listUsers } from "../s3/viewUserData.js";
+import { listUsers } from "./view/view-user-page.js";
 
 // Header Events
 headerLinkHandle();

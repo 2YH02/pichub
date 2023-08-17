@@ -1,4 +1,4 @@
-import { listSearchUsers } from "../../s3/viewUserData";
+import { listSearchUsers } from "../view/view-user-page";
 
 export function searchByUser() {
   const searchEls = document.querySelectorAll("header input");

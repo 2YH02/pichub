@@ -1,10 +1,10 @@
 import {
-  listUsers,
   getProfileImg,
   profileUpload,
   profileDelete,
 } from "../../s3/viewUserData";
 import { addUserData } from "../../s3/handleUserData";
+import { listUsers } from "./view-user-page";
 
 export function generateEditProfilePage(user) {
   // console.log(user);

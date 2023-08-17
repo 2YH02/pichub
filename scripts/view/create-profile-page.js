@@ -1,6 +1,7 @@
 import { generateEditProfilePage } from "./create-edit-profile-page";
 import { deleteUserData, addUserData } from "../../s3/handleUserData";
-import { listUsers, getProfileImg } from "../../s3/viewUserData";
+import { getProfileImg } from "../../s3/viewUserData";
+import { listUsers } from "./view-user-page";
 
 export function generateProfilePage(userName) {
   const userJson = import.meta.env.VITE_USER_JSON;

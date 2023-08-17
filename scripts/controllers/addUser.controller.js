@@ -1,4 +1,4 @@
-import { listUsers } from "../../s3/viewUserData";
+import { listUsers } from "../view/view-user-page";
 import { generateAddUserPage } from "../view/create-user-page";
 
 export function viewUserPage() {

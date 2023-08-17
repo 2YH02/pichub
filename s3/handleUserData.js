@@ -1,4 +1,3 @@
-import { listUsers } from "./viewUserData";
 let albumBucketName = import.meta.env.VITE_BUCKET_NAME;
 
 AWS.config.region = import.meta.env.VITE_REGION;
@@ -26,8 +25,7 @@ export function addUser(albumName) {
         if (err) {
           rej("유저 생성 오류: " + err.message);
         }
-        alert("생성 완료!!");
-        res();
+        res("생성 완료!!");
       });
     });
   });
@@ -37,27 +35,20 @@ export function addUserAlbum(albumName, userId) {
   return new Promise((res, rej) => {
     userId = userId.trim();
     let userIdKey = encodeURIComponent(userId);
-    s3.headObject(
-      { Key: userIdKey + "/" + albumName + "/" },
-      function (err, data) {
-        if (!err) {
-          rej("이미 존재하는 앨범 이름 입니다.");
-        }
-        if (err.code !== "NotFound") {
+    s3.headObject({ Key: userIdKey + "/" + albumName + "/" }, function (err) {
+      if (!err) {
+        rej("이미 존재하는 앨범 이름 입니다.");
+      }
+      if (err.code !== "NotFound") {
+        rej("앨범 생성 오류: " + err.message);
+      }
+      s3.putObject({ Key: userIdKey + "/" + albumName + "/" }, function (err) {
+        if (err) {
           rej("앨범 생성 오류: " + err.message);
         }
-        s3.putObject(
-          { Key: userIdKey + "/" + albumName + "/" },
-          function (err, data) {
-            if (err) {
-              rej("앨범 생성 오류: " + err.message);
-            }
-            alert("생성 완료!!");
-            res();
-          }
-        );
-      }
-    );
+        res("생성 완료!!");
+      });
+    });
   });
 }
 
@@ -78,12 +69,11 @@ export function deleteUserAlbum(albumName, userId) {
           {
             Delete: { Objects: objects, Quiet: true },
           },
-          function (err, data) {
+          function (err) {
             if (err) {
               rej("앨범 삭제 오류: ", err.message);
             }
-            alert("삭제 완료!!");
-            res();
+            res("삭제 완료!!");
           }
         );
       }
@@ -95,7 +85,7 @@ export function addUserData(json) {
   return new Promise((res, rej) => {
     s3.upload(
       { Key: "users.json", Body: json, ContentType: "application/json" },
-      (err, data) => {
+      (err) => {
         if (err) {
           console.error("유저 데이터 입력 오류:", err);
           rej(err);
@@ -122,7 +112,7 @@ export function deleteUserData(albumName) {
         {
           Delete: { Objects: objects, Quiet: true },
         },
-        function (err, data) {
+        function (err) {
           if (err) {
             rej("유저 삭제 오류: ", err.message);
           }

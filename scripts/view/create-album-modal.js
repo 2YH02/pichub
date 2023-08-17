@@ -1,5 +1,5 @@
 import { addUserAlbum } from "../../s3/handleUserData";
-import { listAlbums } from "../../s3/viewUserData";
+import { listAlbums } from "./view-album-page";
 
 export function generateAlbumModal(userName) {
   const createAlbum = document.getElementById("create-album");

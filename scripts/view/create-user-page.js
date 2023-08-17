@@ -1,5 +1,6 @@
-import { listUsers, getProfileImg, profileUpload } from "../../s3/viewUserData";
+import { getProfileImg, profileUpload } from "../../s3/viewUserData";
 import { addUserData, addUser } from "../../s3/handleUserData";
+import { listUsers } from "./view-user-page";
 import { v4 as uuid } from "uuid";
 
 export function generateAddUserPage() {
