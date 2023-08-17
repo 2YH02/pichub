@@ -144,7 +144,7 @@
 
 @media screen and (max-width: 1023px) {
   .header .header_nav li {
-    color: green;
+    /* color: green; */
   }
 }
 
@@ -175,7 +175,7 @@
   }
   .header .header_nav li {
     width: 100%;
-    color: blue;
+    /* color: blue; */
     border-bottom: none !important;
   }
   .header .header_nav li:hover {
@@ -192,6 +192,6 @@
 
 @media screen and (max-width: 480px) {
   .header .header_nav li {
-    color: yellow;
+    /* color: yellow; */
   }
 }
