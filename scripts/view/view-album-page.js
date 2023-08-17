@@ -3,6 +3,7 @@ import { generateAlbumImg } from "../../s3/viewUserData";
 import { generateAlbumModal } from "./create-album-modal";
 import { listUsers } from "./view-user-page";
 import { viewAlbum } from "./view-img-page";
+import { viewLoading } from "../controllers/loading.controller";
 
 export const listAlbums = async (userName) => {
   const data = await getUserAlbumData(userName);
@@ -61,8 +62,12 @@ export const listAlbums = async (userName) => {
 
     album.append(title);
 
-    album.addEventListener("click", () => {
-      viewAlbum(userName, albumName);
+    album.addEventListener("click", async () => {
+      viewLoading(true);
+      // debugger;
+      await viewAlbum(userName, albumName);
+      // debugger;
+      viewLoading(false);
       // console.log(albumName);
     });
 

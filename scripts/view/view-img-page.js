@@ -191,4 +191,5 @@ export const viewAlbum = async (userName, albumName) => {
 
   images.appendChild(inputImgWrap);
   images.appendChild(deleteAlbumBtn);
+  // debugger;
 };
