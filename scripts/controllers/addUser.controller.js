@@ -1,14 +1,14 @@
 import { listUsers } from "../view/view-user-page";
 import { generateAddUserPage } from "../view/create-user-page";
 
-export function viewUserPage() {
+export const viewUserPage = () => {
   const viewUserBtn = document.querySelector(".view-user");
   viewUserBtn.addEventListener("click", () => {
     listUsers();
   });
-}
+};
 
-export function createUser() {
+export const createUser = () => {
   const addUserBtn = document.querySelector(".header_nav .add-user");
   const createUserSection = document.getElementById("create-user");
   const s3Viewer = document.getElementById("s3");
@@ -34,4 +34,4 @@ export function createUser() {
       profilePage.style.display = "none";
     }
   });
-}
+};

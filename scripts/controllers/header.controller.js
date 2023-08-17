@@ -1,3 +1,5 @@
+import { listUsers } from "../view/view-user-page";
+
 export const headerLinkHandle = () => {
   const headerLinkEls = document.querySelectorAll(".header_nav li");
   const headerAanchorEls = document.querySelectorAll(".header_nav a");
@@ -27,5 +29,14 @@ export const headerHamburgerHandle = () => {
     headerNavEl.classList.toggle("active");
 
     hamburgerEl.classList.toggle("active");
+  });
+};
+
+export const clickMainLogoHandle = () => {
+  const mainLogo = document.getElementById("main-logo");
+
+  mainLogo.addEventListener("click", () => {
+    console.log(1);
+    location.reload();
   });
 };

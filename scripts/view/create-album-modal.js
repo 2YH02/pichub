@@ -1,7 +1,7 @@
 import { addUserAlbum } from "../../s3/handleUserData";
 import { listAlbums } from "./view-album-page";
 
-export function generateAlbumModal(userName) {
+export const generateAlbumModal = (userName) => {
   const createAlbum = document.getElementById("create-album");
   // Create modal container
   const createAlbumModal = document.createElement("div");
@@ -58,4 +58,4 @@ export function generateAlbumModal(userName) {
   createAlbumModal.appendChild(buttonsDiv);
 
   return createAlbumModal;
-}
+};

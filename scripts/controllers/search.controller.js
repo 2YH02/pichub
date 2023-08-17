@@ -1,6 +1,6 @@
 import { listSearchUsers } from "../view/view-user-page";
 
-export function searchByUser() {
+export const searchByUser = () => {
   const searchEls = document.querySelectorAll("header input");
 
   searchEls.forEach((searchEl) => {
@@ -11,9 +11,9 @@ export function searchByUser() {
       listSearchUsers(filter);
     });
   });
-}
+};
 
-function getUserData() {
+const getUserData = () => {
   const userJson = import.meta.env.VITE_USER_JSON;
   return new Promise((res, rej) => {
     fetch(userJson)
@@ -25,4 +25,4 @@ function getUserData() {
         rej("Error:", error);
       });
   });
-}
+};

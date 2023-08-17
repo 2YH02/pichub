@@ -3,7 +3,7 @@ import { addUserData, addUser } from "../../s3/handleUserData";
 import { listUsers } from "./view-user-page";
 import { v4 as uuid } from "uuid";
 
-export function generateAddUserPage() {
+export const generateAddUserPage = () => {
   // Create main container
   const container = document.createElement("div");
   container.classList.add("container", "dp-f", "ai-c", "jc-c");
@@ -226,4 +226,4 @@ export function generateAddUserPage() {
 
   // Return the created container
   return container;
-}
+};

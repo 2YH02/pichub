@@ -4,7 +4,7 @@ import { listAlbums } from "./view-album-page";
 
 let albumBucketName = import.meta.env.VITE_BUCKET_NAME;
 
-export async function viewAlbum(userName, albumName) {
+export const viewAlbum = async (userName, albumName) => {
   const data = await getAlbumImgData(userName, albumName);
   // console.log(data);
   const listTitle = document.getElementById("list-title");
@@ -191,4 +191,4 @@ export async function viewAlbum(userName, albumName) {
 
   images.appendChild(inputImgWrap);
   images.appendChild(deleteAlbumBtn);
-}
+};

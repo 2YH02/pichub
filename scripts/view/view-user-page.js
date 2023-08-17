@@ -2,7 +2,7 @@ import { getProfileImg } from "../../s3/viewUserData";
 import { generateProfilePage } from "./create-profile-page";
 import { listAlbums } from "./view-album-page";
 
-export function listUsers() {
+export const listUsers = () => {
   generateUser();
   const userJson = import.meta.env.VITE_USER_JSON;
   fetch(userJson)
@@ -42,9 +42,9 @@ export function listUsers() {
     .catch((error) => {
       console.error("에러:", error);
     });
-}
+};
 
-export async function listSearchUsers(data) {
+export const listSearchUsers = async (data) => {
   generateUser();
   // console.log(data);
   const editProfilePage = document.getElementById("edit-profile-page");
@@ -76,9 +76,9 @@ export async function listSearchUsers(data) {
   userElements.forEach((e) => {
     users.appendChild(e);
   });
-}
+};
 
-function generateAlbumBtn(userName, profileImg, data) {
+const generateAlbumBtn = (userName, profileImg, data) => {
   const userBox = document.createElement("div");
 
   const imgWrap = document.createElement("div");
@@ -132,9 +132,9 @@ function generateAlbumBtn(userName, profileImg, data) {
   });
 
   return userBox;
-}
+};
 
-export function generateUser() {
+export const generateUser = () => {
   const listTitle = document.getElementById("list-title");
   listTitle.textContent = "User lists";
 
@@ -166,4 +166,4 @@ export function generateUser() {
   if (users.style.display === "none") {
     users.style.display = "flex";
   }
-}
+};

@@ -10,7 +10,7 @@ let s3 = new AWS.S3({
   params: { Bucket: albumBucketName },
 });
 
-export function addUser(albumName) {
+export const addUser = (albumName) => {
   return new Promise((res, rej) => {
     albumName = albumName.trim();
     let albumKey = encodeURIComponent(albumName);
@@ -29,14 +29,15 @@ export function addUser(albumName) {
       });
     });
   });
-}
+};
 
-export function addUserAlbum(albumName, userId) {
+export const addUserAlbum = (albumName, userId) => {
   return new Promise((res, rej) => {
     userId = userId.trim();
     let userIdKey = encodeURIComponent(userId);
     s3.headObject({ Key: userIdKey + "/" + albumName + "/" }, function (err) {
       if (!err) {
+        alert("이미 존재하는 앨범 이름 입니다.");
         rej("이미 존재하는 앨범 이름 입니다.");
       }
       if (err.code !== "NotFound") {
@@ -50,9 +51,9 @@ export function addUserAlbum(albumName, userId) {
       });
     });
   });
-}
+};
 
-export function deleteUserAlbum(albumName, userId) {
+export const deleteUserAlbum = (albumName, userId) => {
   return new Promise((res, rej) => {
     userId = userId.trim();
     let userIdKey = encodeURIComponent(userId);
@@ -79,9 +80,9 @@ export function deleteUserAlbum(albumName, userId) {
       }
     );
   });
-}
+};
 
-export function addUserData(json) {
+export const addUserData = (json) => {
   return new Promise((res, rej) => {
     s3.upload(
       { Key: "users.json", Body: json, ContentType: "application/json" },
@@ -96,9 +97,9 @@ export function addUserData(json) {
       }
     );
   });
-}
+};
 
-export function deleteUserData(albumName) {
+export const deleteUserData = (albumName) => {
   return new Promise((res, rej) => {
     let albumKey = encodeURIComponent(albumName) + "/";
     s3.listObjects({ Prefix: albumKey }, function (err, data) {
@@ -122,9 +123,9 @@ export function deleteUserData(albumName) {
       );
     });
   });
-}
+};
 
-// export function addDefaultData(json) {
+// export const addDefaultData = (json) => {
 //   const body = JSON.stringify([]);
 //   s3.upload(
 //     { Key: "users.json", Body: body, ContentType: "application/json" },
@@ -136,6 +137,6 @@ export function deleteUserData(albumName) {
 //       }
 //     }
 //   );
-// }
+// };
 
 // addDefaultData();

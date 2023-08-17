@@ -10,7 +10,7 @@ let s3 = new AWS.S3({
   params: { Bucket: albumBucketName },
 });
 
-export function generateAlbumImg(album, userName, albumName) {
+export const generateAlbumImg = (album, userName, albumName) => {
   s3.listObjects(
     { Prefix: userName + "/" + albumName + "/" },
     function (err, data) {
@@ -30,9 +30,9 @@ export function generateAlbumImg(album, userName, albumName) {
       }
     }
   );
-}
+};
 
-export async function getUserAlbumData(userName) {
+export const getUserAlbumData = async (userName) => {
   return new Promise((res, rej) => {
     let albumPhotosKey = encodeURIComponent(userName) + "/";
     s3.listObjectsV2(
@@ -46,9 +46,9 @@ export async function getUserAlbumData(userName) {
       }
     );
   });
-}
+};
 
-export function imageUpload(userName, albumName, img, file) {
+export const imageUpload = (userName, albumName, img, file) => {
   return new Promise((res, rej) => {
     s3.upload(
       {
@@ -64,9 +64,9 @@ export function imageUpload(userName, albumName, img, file) {
       }
     );
   });
-}
+};
 
-export function deleteImg(userName, albumName, img) {
+export const deleteImg = (userName, albumName, img) => {
   return new Promise((res, rej) => {
     s3.deleteObject(
       {
@@ -81,9 +81,9 @@ export function deleteImg(userName, albumName, img) {
       }
     );
   });
-}
+};
 
-export async function getProfileImg(userName) {
+export const getProfileImg = async (userName) => {
   return new Promise((res, rej) => {
     let albumPhotosKey = encodeURIComponent(userName) + "/";
     s3.listObjectsV2(
@@ -105,9 +105,9 @@ export async function getProfileImg(userName) {
       }
     );
   });
-}
+};
 
-export function profileUpload(userName, file, img) {
+export const profileUpload = (userName, file, img) => {
   return new Promise((res, rej) => {
     s3.upload(
       {
@@ -123,9 +123,9 @@ export function profileUpload(userName, file, img) {
       }
     );
   });
-}
+};
 
-export function profileDelete(userName, img) {
+export const profileDelete = (userName, img) => {
   return new Promise((res, rej) => {
     s3.deleteObject(
       {
@@ -140,9 +140,9 @@ export function profileDelete(userName, img) {
       }
     );
   });
-}
+};
 
-export function getAlbumImgData(userName, albumName) {
+export const getAlbumImgData = (userName, albumName) => {
   return new Promise((res, rej) => {
     s3.listObjectsV2(
       {
@@ -157,4 +157,4 @@ export function getAlbumImgData(userName, albumName) {
       }
     );
   });
-}
+};

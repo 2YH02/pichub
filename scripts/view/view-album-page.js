@@ -4,7 +4,7 @@ import { generateAlbumModal } from "./create-album-modal";
 import { listUsers } from "./view-user-page";
 import { viewAlbum } from "./view-img-page";
 
-export async function listAlbums(userName) {
+export const listAlbums = async (userName) => {
   const data = await getUserAlbumData(userName);
 
   const listTitle = document.getElementById("list-title");
@@ -83,4 +83,4 @@ export async function listAlbums(userName) {
   });
 
   viewer.appendChild(addAlbumBtn);
-}
+};

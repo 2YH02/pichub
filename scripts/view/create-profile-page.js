@@ -3,7 +3,7 @@ import { deleteUserData, addUserData } from "../../s3/handleUserData";
 import { getProfileImg } from "../../s3/viewUserData";
 import { listUsers } from "./view-user-page";
 
-export function generateProfilePage(userName) {
+export const generateProfilePage = (userName) => {
   const userJson = import.meta.env.VITE_USER_JSON;
   const container = document.createElement("div");
   fetch(userJson)
@@ -173,4 +173,4 @@ export function generateProfilePage(userName) {
     });
 
   return container;
-}
+};

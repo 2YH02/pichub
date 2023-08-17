@@ -2,6 +2,7 @@ import {
   headerLinkHandle,
   headerInputHandle,
   headerHamburgerHandle,
+  clickMainLogoHandle,
 } from "./controllers/header.controller.js";
 
 import { createUser, viewUserPage } from "./controllers/addUser.controller.js";
@@ -14,6 +15,7 @@ import { listUsers } from "./view/view-user-page.js";
 headerLinkHandle();
 headerInputHandle();
 headerHamburgerHandle();
+clickMainLogoHandle();
 
 // Search Events
 searchByUser();
