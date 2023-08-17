@@ -19,7 +19,7 @@
 ### 1. 유저 생성
 #### 프로필 사진을 등록하고(안 하면 기본 사진) 간단한 정보를 입력 후 유저를 생성합니다.
 
-<img src="./assets/gif/유저추가.gif" alt="logo" width="500" height="300" style="object-fit: cover;">
+<img src="https://github.com/2YH02/pichub/assets/125336070/5c21ed6a-0db0-4747-a8fd-64ce9da92dca" alt="logo" width="500" height="300" style="object-fit: cover;">
 
 ```
 💡 유저를 생성하면 AWS s3 버킷에 유저의 고유한 id 값을 이름으로 한 폴더가 생성되고, 
@@ -28,7 +28,7 @@ s3 버킷 안에 전체 유저의 데이터가 담겨 있는 json 파일을 가�
 ### 2. 프로필 정보 변경
 #### 유저의 정보나 프로필 이미지를 변경합니다.
 
-<img src="./assets/gif/프로필변경.gif" alt="logo" width="500" height="300" style="object-fit: cover;">
+<img src="https://github.com/2YH02/pichub/assets/125336070/cc1034d4-10a3-4558-8e4c-eb8e44d1425d" alt="logo" width="500" height="300" style="object-fit: cover;">
 
 ```
 💡 유저의 정보는 s3 버킷 안에 json 파일을 가져와 업데이트합니다. 
@@ -41,7 +41,7 @@ s3 버킷의 폴더의 첫번째 경로에 저장된 기존 프로필 사진 데
 ### 3. 유저 삭제
 #### 등록된 유저를 삭제합니다.
 
-<img src="./assets/gif/유저삭제.gif" alt="logo" width="500" height="300" style="object-fit: cover;">
+<img src="https://github.com/2YH02/pichub/assets/125336070/f09199bb-7f75-46b8-8421-3d45a3eeb5f6" alt="logo" width="500" height="300" style="object-fit: cover;">
 
 ```
 💡 s3 버킷 안에 json 파일을 가져와 해당 유저를 삭제한 후 업데이트합니다. 
@@ -50,7 +50,7 @@ s3 버킷의 폴더의 첫번째 경로에 저장된 기존 프로필 사진 데
 ### 4. 유저 검색
 #### 등록된 유저를 이름으로 검색합니다. (다른 검색 기능은 이후 추가 예정)
 
-<img src="./assets/gif/유저검색.gif" alt="logo" width="500" height="300" style="object-fit: cover;">
+<img src="https://github.com/2YH02/pichub/assets/125336070/c762e98c-30b9-41e7-b2a6-a19ee29f407f" alt="logo" width="500" height="300" style="object-fit: cover;">
 
 ```
 💡 s3 버킷 안에 json 파일을 가져와 유저의 이름에 검색어가 포함되면 화면에 출력해 줍니다.
@@ -58,7 +58,7 @@ s3 버킷의 폴더의 첫번째 경로에 저장된 기존 프로필 사진 데
 ### 5. 앨범 생성 및 삭제
 #### 자신이 관리하고 싶은 이미지를 넣을 앨범을 생성하고 삭제할 수 있습니다.
 
-<img src="./assets/gif/앨범생성삭제.gif" alt="logo" width="500" height="300" style="object-fit: cover;">
+<img src="https://github.com/2YH02/pichub/assets/125336070/4711ee5a-e08c-4bf5-b47e-24c7ff7a29a1" alt="logo" width="500" height="300" style="object-fit: cover;">
 
 ```
 💡 s3 버킷 안에 해당 유저의 고유한 id 값을 가진 폴더의 첫번째 경로에 생성하고자 하는 이름을 가진 폴더를 생성합니다. 
@@ -67,7 +67,7 @@ s3 버킷의 폴더의 첫번째 경로에 저장된 기존 프로필 사진 데
 ### 6. 앨범 커버 이미지 변경
 #### 생성한 앨범의 커버 이미지를 변경합니다.
 
-<img src="./assets/gif/앨범커버변경.gif" alt="logo" width="500" height="300" style="object-fit: cover;">
+<img src="https://github.com/2YH02/pichub/assets/125336070/a6b368cc-bf24-445f-8508-573e469b406a" alt="logo" width="500" height="300" style="object-fit: cover;">
 
 ```
 💡 앨범의 커버 이미지는 생성될 때 기본 이미지로 생성이 되고, 
@@ -76,7 +76,7 @@ s3 버킷의 폴더의 첫번째 경로에 저장된 기존 프로필 사진 데
 ### 7. 이미지 추가 및 삭제
 #### 앨범 내부에 이미지를 업로드하고 삭제합니다.
 
-<img src="./assets/gif/이미지추가삭제.gif" alt="logo" width="500" height="300" style="object-fit: cover;">
+<img src="https://github.com/2YH02/pichub/assets/125336070/85176a2f-0ab8-4d0b-be5d-7ee654928d22" alt="logo" width="500" height="300" style="object-fit: cover;">
 
 ```
 💡 앨범 내부에 이미지를 추가 및 삭제할 수 있습니다. 
@@ -87,7 +87,7 @@ s3 버킷의 폴더의 첫번째 경로에 저장된 기존 프로필 사진 데
 ### 8. 로딩
 #### 앨범 내부 이미지가 로딩될 때 로딩 화면이 나옵니다.
 
-<video src="./assets/gif/로딩화면.mp4" autoplay loop muted></video>
+<img src="https://github.com/2YH02/pichub/assets/125336070/7f7b8ba5-751d-4579-97bb-79e197b6e04d" alt="logo" width="500" height="300" style="object-fit: cover;">
 
 ```
 💡 시간이 걸리는 출력에 로딩 화면이 나옵니다. 
@@ -120,9 +120,9 @@ s3 bucket
 #### 370px 의 넓이까지는 원활하게 사용할 수 있도록 만들었습니다.
 | 헤더 및 유저 리스트 | 프로필 및 프로필 변경 |
 |:---------:|:---------:|
-| <img src="./assets/gif/헤더유저리스트.gif" width="300" height="200" style="object-fit: cover;">  | <img src="./assets/gif/프로필.gif" width="300" height="200" style="object-fit: cover;">   |
+| <img src="https://github.com/2YH02/pichub/assets/125336070/4b63abab-3aeb-4cd3-8b47-84140db97bc4" width="300" height="200" style="object-fit: cover;">  | <img src="https://github.com/2YH02/pichub/assets/125336070/8af3ce51-b0ef-446f-876f-3068b17836ea" width="300" height="200" style="object-fit: cover;">   |
 | 앨범 및 이미지 | |
-| <img src="./assets/gif/앨범이미지.gif" width="300" height="200" style="object-fit: cover;"> | |
+| <img src="https://github.com/2YH02/pichub/assets/125336070/b995210e-f574-4bc4-903b-897bce8acf23" width="300" height="200" style="object-fit: cover;"> | |
 
 ## 사용 스택
 <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/amazon s3-569A31?style=for-the-badge&logo=amazons3&logoColor=white"> <img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"> 
@@ -141,4 +141,4 @@ s3 bucket
 이러한 단순한 이유보다는 정확한 이유와 장점을 공부하고 사용해야 할 것 같습니다.
 ```
 ## 유저 플로우
-<img src="./assets/gif/유저플로우.png">
+<img src="https://github.com/2YH02/pichub/assets/125336070/9bd46c6d-896f-48b2-a9bc-304b5bff8ece">
